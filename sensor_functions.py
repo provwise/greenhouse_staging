@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 
 from libraries import I2C_LCD_driver as lcd_lib
+from libraries import relay
 import Adafruit_DHT
 import distance as dst
 from time import *
+import RPi.GPIO as GPIO
 
 # Define LCD panel
 mylcd = lcd_lib.lcd()
@@ -63,3 +65,24 @@ def lcd_shutdown():
 
     sleep(5)
     mylcd.lcd_clear()
+
+def fan_check():
+  state = GPIO.input(37)
+
+  if state == 0:
+    mylcd.lcd_display_string('Shutting down', 1)
+    mylcd.lcd_display_string('Ventilation system', 2)
+    mylcd.lcd_display_string('...', 3)
+
+    relay.relay1_off()
+    sleep(5)
+    mylcd.lcd_clear()
+  else:
+    mylcd.lcd_display_string('Spinning up', 1)
+    mylcd.lcd_display_string('Ventilation system', 2)
+    mylcd.lcd_display_string('...', 3)
+
+    relay.relay1_on()
+    sleep(5)
+    mylcd.lcd_clear()
+
