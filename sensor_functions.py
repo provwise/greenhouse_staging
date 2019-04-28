@@ -70,19 +70,15 @@ def fan_check():
   state = GPIO.input(37)
 
   if state == 0:
-    mylcd.lcd_display_string('Shutting down', 1)
-    mylcd.lcd_display_string('Ventilation system', 2)
-    mylcd.lcd_display_string('...', 3)
-
-    relay.relay1_off()
-    sleep(5)
+    mylcd.lcd_display_string('Ventilation system', 1)
+    mylcd.lcd_display_string('Is currently', 2)
+    mylcd.lcd_display_string('Turned on.', 3)
+    sleep(4)
     mylcd.lcd_clear()
   else:
-    mylcd.lcd_display_string('Spinning up', 1)
-    mylcd.lcd_display_string('Ventilation system', 2)
-    mylcd.lcd_display_string('...', 3)
-
-    relay.relay1_on()
-    sleep(5)
+    mylcd.lcd_display_string('Ventilation system', 1)
+    mylcd.lcd_display_string('Is currently', 2)
+    mylcd.lcd_display_string('Shut down.', 3)
+    sleep(4)
     mylcd.lcd_clear()
 
