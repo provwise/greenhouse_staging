@@ -22,7 +22,7 @@ if humidity is not None and temperature is not None:
         print("Temperature: %.2f" % (temperature))
         print("Humidity: %.2f" % (humidity))
     
-    elif (humidity < 20.0 or temperature < 24.0) and state == 0: 
+    elif (humidity < 20.0 and temperature < 24.0) and state == 0: 
         relay.relay1_off()
         print("Ventilation system turned off")
         print("Temperature: %.2f" % (temperature))
