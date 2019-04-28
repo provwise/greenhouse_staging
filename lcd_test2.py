@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 import sensor_functions as sensor
-import RPi.GPIO as PINS
+import RPi.GPIO as GPIO
 
 while True:
 
@@ -12,6 +12,6 @@ while True:
 
   except:
     sensor.lcd_shutdown()
-    PINS.cleanup()
+    GPIO.cleanup()
     break
 

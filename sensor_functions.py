@@ -10,6 +10,11 @@ import RPi.GPIO as GPIO
 # Define LCD panel
 mylcd = lcd_lib.lcd()
 
+# Set defaul status of relay1 (fan) to off
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(37, GPIO.OUT)
+GPIO.output(37, GPIO.HIGH)
+
 
 # Get temp and humidity update, display for 30 secs, clear screen
 def temp_update():
